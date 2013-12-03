@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>ShuangSeToolsServer</display-name>
+
+  <servlet>
+    <servlet-name>GetExperienceDetailAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.GetExperienceDetailAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetExperienceDetailAction</servlet-name>
+    <url-pattern>/GetExperienceDetailAction.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetSharedExperienceAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.GetSharedExperienceAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetSharedExperienceAction</servlet-name>
+    <url-pattern>/GetSharedExperienceAction.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GetSmsTextAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.GetSmsTextAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetSmsTextAction</servlet-name>
+    <url-pattern>/GetSmsTextAction.do</url-pattern>
+  </servlet-mapping> 
+
+  <servlet>
+    <servlet-name>RegPhoneInformationAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.RegPhoneInformationAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegPhoneInformationAction</servlet-name>
+    <url-pattern>/RegPhoneInformationAction.do</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+    <servlet-name>BackgroundCheckAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.BackgroundCheckAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BackgroundCheckAction</servlet-name>
+    <url-pattern>/BackgroundCheckAction.do</url-pattern>
+  </servlet-mapping> 
+    
+  <servlet>
+    <servlet-name>GetHistoryDataAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.GetHistoryDataAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetHistoryDataAction</servlet-name>
+    <url-pattern>/GetHistoryDataAction.do</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+    <servlet-name>SuggestionAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.SuggestionAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SuggestionAction</servlet-name>
+    <url-pattern>/SuggestionAction.do</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
+    <servlet-name>GetUserCounterAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.GetUserCounterAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetUserCounterAction</servlet-name>
+    <url-pattern>/GetUserCounterAction.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
