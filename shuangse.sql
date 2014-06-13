@@ -8,7 +8,6 @@ USE shuangse;
 --
 -- Table structure for table `controlmsg`
 --
-
 CREATE TABLE IF NOT EXISTS `controlmsg` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `infoType` varchar(10) NOT NULL DEFAULT 'newapk' COMMENT 'newapk;message',
@@ -17,27 +16,24 @@ CREATE TABLE IF NOT EXISTS `controlmsg` (
   `version` varchar(10) DEFAULT NULL,
   `validflag` int(8) NOT NULL DEFAULT '0',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `controlmsg`
 --
 delete from controlmsg;
 INSERT INTO `controlmsg` (`Id`, `infoType`, `text`, `url`, `version`, `validflag`) VALUES
-(1, 'newapk', '您好，本软件有升级版本1.12，请点击链接下载更新或去安卓市场下载更新版，谢谢您一贯的支持！', 'http://cn.ajaxchai.tk/ShuangSeToolsServer/a.apk', '1.12', 1);
-
--- --------------------------------------------------------
+(1, 'newapk', '您好，本软件有升级版本1.12，请点击链接下载更新或去安卓市场下载更新版，谢谢您一贯的支持！', 'http://cn.ajaxchai.tk/ShuangSeToolsServer/apk/a.apk', '1.12', 1);
 
 --
 -- Table structure for table `experienceshare`
 --
-
 CREATE TABLE IF NOT EXISTS `experienceshare` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
   `htmlText` varchar(3000) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `experienceshare`
@@ -48,12 +44,9 @@ INSERT INTO `experienceshare` (`Id`, `title`, `htmlText`) VALUES
 (2, '旋转组号模式的使用和说明', '<br>用旋转组号法也即聪明组合法购买彩票，需要根据所选红球的个数不同，选择对应的旋转组号模式进行组号。下面是常见的组号模式的说明：<br><br>组号模式都以《n个红码-中x保y-m注》的形式表示，那么这样一个模式是什么含义呢？<br><br>例如：以《8个红码-中6保5-4注》模式为例说明，这里的8个红码表示你选择了8个红球，也即，你根据遗漏走势图的走势情况，选出了8个看好的红球（如何根据遗漏走势图选择红球，我会在以后的经验分享中陆续说明）；<br><br>这里的中6保5的含义是：如果你选择的8个红球里面包含了当期开奖的6个红球号码，那么根据此旋转组号模式组号出来的号码组（共4注-也即后面-4注的含义）里面，会保证你中至少一注5红的奖项；也即如果你选择的8个红球包含了当期开奖号码的全部6个红球，如果你购买了根据此模式组号出来的全部4注号码，那么会保证你中一个5红的奖项，只需购买4注号码。<br><br>当然，如果你以复式的形式购买你选择的全部8个红球号码（32注号码），那么你就会中一个6红的奖项，当然你付出的也更多（你需要购买32注）； 而采用旋转组号，你只需要购买4注。这就是旋转组号也即聪明组合模式的含义和技巧。<br><br>所以，采用旋转矩阵也即聪明组号买彩票很简单，只需三步：<br><br>一、在遗漏图中选择看好的红球<br>二、根据所选择的红球个数选择对应的模式<br>三、组号即可。'),
 (3, '如何根据遗漏走势图选择红球', '本文讲解说明如何利用本软件中的遗漏走势图选择红球。<br><br>一、选重码<br><br>二、选邻码<br><br>三、选热码<br><br>本文将陆续更新，请定期查看。');
 
--- --------------------------------------------------------
-
 --
 -- Table structure for table `historydata`
 --
-
 CREATE TABLE IF NOT EXISTS `historydata` (
   `itemid` int(11) NOT NULL DEFAULT '0',
   `red1` int(11) NOT NULL DEFAULT '0',
@@ -1729,25 +1722,23 @@ INSERT INTO `historydata` (`itemid`, `red1`, `red2`, `red3`, `red4`, `red5`, `re
 --
 -- Table structure for table `smstext`
 --
-
 CREATE TABLE IF NOT EXISTS `smstext` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `smsText` varchar(300) DEFAULT NULL,
   `validflag` varchar(8) NOT NULL DEFAULT '1',
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `smstext`
 --
 delete from smstext;
 INSERT INTO `smstext` (`Id`, `smsText`, `validflag`) VALUES
-(1, '[双色球工具箱]是安卓(Android)平台上最好的双色球彩票工具，它采用遗漏走势图帮您选号，运用数学界最新的组合覆盖策略帮您实现中大奖的梦想，不妨一试，下载地址:http://cn.ajaxchai.tk/ShuangSeToolsServer/a.apk', '1');
+(1, '[双色球工具箱]是安卓(Android)平台上最好的双色球彩票工具，它采用遗漏走势图帮您选号，运用数学界最新的组合覆盖策略帮您实现中大奖的梦想，不妨一试，下载地址:http://cn.ajaxchai.tk/ShuangSeToolsServer/apk/a.apk', '1');
 
 --
 -- Table structure for table `suggestion`
 --
-
 CREATE TABLE IF NOT EXISTS `suggestion` (
   `contactnum` varchar(15) DEFAULT '',
   `suggestion` varchar(500) DEFAULT '',
@@ -1759,16 +1750,13 @@ CREATE TABLE IF NOT EXISTS `suggestion` (
 --
 -- Table structure for table `testconn`
 --
-
 CREATE TABLE IF NOT EXISTS `testconn` (
   `id` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
 --
 -- Table structure for table `userlist`
 --
-
 CREATE TABLE IF NOT EXISTS `userlist` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `deviceId` varchar(50) DEFAULT NULL,
@@ -1787,5 +1775,5 @@ CREATE TABLE IF NOT EXISTS `userlist` (
   `lastLoginTime` datetime DEFAULT NULL,
   `apkVersion` varchar(8) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12580 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 

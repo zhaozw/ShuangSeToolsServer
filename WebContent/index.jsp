@@ -1,9 +1,9 @@
 <HTML>
-<HEAD><TITLE>彩票工具箱</TITLE>
-<META http-equiv="Content-Type" content="text/html; charset=GB2312">
+<HEAD><TITLE>杞欢涓嬭浇</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </HEAD>
 <body>
-<a href="./a.apk">点击下载彩票工具箱</a>
+<a href="./apk/a.apk">鐐瑰嚮涓嬭浇</a>
 </body>
 </html>
 

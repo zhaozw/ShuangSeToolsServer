@@ -1,4 +1,11 @@
 #!/bin/sh
+####################################################
+#
+#   add this line to /etc/rc.local
+#
+#   /root/observer.sh
+####################################################
+
 export JAVA_HOME=/opt/jdk1.7.0_05
 export JRE_HOME=/opt/jdk1.7.0_05/jre
 export TOMCAT_HOME=/opt/apache_tomcat_7.0.28

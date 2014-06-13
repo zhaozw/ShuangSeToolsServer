@@ -70,7 +70,7 @@ def download():
 
     except Exception,data:
         print "Exception happens"
-        logfile.write("Exception happends \n")
+        logfile.write("Exception happens \n")
         print Exception,":",data
         logfile.write(str(Exception) + ":" + str(data) + "\n")
 
