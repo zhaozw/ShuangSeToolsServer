@@ -65,6 +65,15 @@
     <servlet-name>GetUserCounterAction</servlet-name>
     <url-pattern>/GetUserCounterAction.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ShareMyExperienceAction</servlet-name>
+    <servlet-class>com.shuangsetoolsserver.action.ShareMyExperienceAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShareMyExperienceAction</servlet-name>
+    <url-pattern>/ShareMyExperienceAction.do</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

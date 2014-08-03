@@ -3,8 +3,10 @@ package com.shuangsetoolsserver.logic;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.shuangsetoolsserver.base.DateUtil;
 import com.shuangsetoolsserver.db.DBUtil;
 import com.shuangsetoolsserver.meta.ExperienceItem;
 
@@ -44,10 +46,42 @@ public class SharedExperienceLogic {
       e.setId(resultSet.getInt("Id"));
       e.setTitle(resultSet.getString("title"));
       e.setHtmlText(resultSet.getString("htmlText"));
+      e.setAuthor(resultSet.getString("author"));
+      e.setContact(resultSet.getString("contact"));
+      e.setAddTime(resultSet.getString("addTime"));
     }
     
     db.release();
 
     return e;
   }
+
+public boolean insertExperience(String encodedExprTitleStr,
+        String encodedExprTextStr, String encodedExprAuthorStr,
+        String encodedExprContactStr) {
+    String curTime = DateUtil.parseStringFromDate(new Date());
+    StringBuffer insertSQL = new StringBuffer();
+    insertSQL.append("insert experienceshare (title, htmlText, author, contact, addTime)")
+        .append("values('") 
+        .append(encodedExprTitleStr).append("','")
+        .append(encodedExprTextStr).append("','")
+        .append(encodedExprAuthorStr).append("','")
+        .append(encodedExprContactStr).append("','")
+        .append(curTime).append("');");
+    
+    DBUtil db = null;
+    try {
+        db = new DBUtil();
+        db.execute(insertSQL.toString());
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    } finally {
+        if(db != null) {
+            db.release();
+        }
+    }
+
+    return true;
+}
 }
