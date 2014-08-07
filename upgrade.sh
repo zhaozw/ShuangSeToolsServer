@@ -27,8 +27,8 @@ SQLFILE=$1
 WARFILE=$2
 WARDIR=$3
 BACKUPDIR=/opt/backup
-SHUT_TOMCAT=/opt/apache_tomcat_7.0.28/bin/shutdown.sh
-START_TOMCAT=/opt/apache_tomcat_7.0.28/bin/startup.sh
+SHUT_TOMCAT="service tomcat stop"
+START_TOMCAT="service tomcat start"
 
 echo "upgrade database by executing $SQLFILE"
 mysql -h localhost -u java -p 100200 < $SQLFILE

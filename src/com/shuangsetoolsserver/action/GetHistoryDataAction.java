@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shuangsetoolsserver.base.BaseAction;
 import com.shuangsetoolsserver.base.Log;
 import com.shuangsetoolsserver.logic.HisDataLogic;
@@ -60,7 +61,34 @@ public class GetHistoryDataAction extends BaseAction {
             Log.w(TAG, e.toString());
             response.sendError(HttpServletResponse.SC_BAD_REQUEST);
         }
-
     }
+    
+    protected void getCodeItemInDetail(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+          response.setCharacterEncoding("utf-8");
+          PrintWriter out = response.getWriter();
+          
+          try {
+            int itemId = Integer.parseInt(request.getParameter("ItemId"));
+            Log.i(TAG, "itemID:" + itemId);
+            HisDataLogic hisDataLogic = new HisDataLogic();
+            CodeItem expItem= hisDataLogic.getCodeItem(itemId);
+            
+            if (expItem != null) {
+              
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.writeValue(out, expItem);
+              
+            } else {
+                response.sendError(HttpServletResponse.SC_NO_CONTENT);
+            }
+            
+            out.flush();
+          } catch (Exception e) {
+            Log.w(TAG, e.toString());
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+          }
+        }
+
 
 }
