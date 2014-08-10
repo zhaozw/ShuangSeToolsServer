@@ -17,12 +17,13 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.shuangsetoolsserver.base.Log;
 import com.shuangsetoolsserver.db.DBUtil;
 import com.shuangsetoolsserver.meta.CodeItem;
 
 public class HisDataLogic {
 
-    // private final static String TAG = "HisDataLogic";
+    private final static String TAG = "HisDataLogic";
 
     public int getLatestHisItemID() throws SQLException {
         String sql = "select max(itemid) from historydata";
@@ -108,6 +109,7 @@ public class HisDataLogic {
 
             return item;
         } catch (Exception ex) {
+            Log.e(TAG, ex.toString());
             return null;
         }
     }

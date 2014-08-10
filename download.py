@@ -1,15 +1,19 @@
 #!/usr/bin/python
+#  execute every 5 minutes to update
+#  crontab -e 
+#  */5 * * * * python /root/download.py
+#
 import urllib
 import os
 import MySQLdb
 import time
 
 def download():
-    logfile = open("/var/log/downloaddata.log","a")
+    #logfile = open("/var/log/downloaddata.log","a")
 
     try:
         print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-        logfile.write("\n" + time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + "\n")
+        #logfile.write("\n" + time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + "\n")
 
         db = MySQLdb.connect(host="localhost",user="java",passwd="100200",db="shuangse")
         cursor = db.cursor()
@@ -20,10 +24,10 @@ def download():
             curmaxitemid = row
 
         print "current latest itemid in mysql is " + str(curmaxitemid)
-        logfile.write("current latest itemid in mysql is " + str(curmaxitemid) + "\n")
+        #logfile.write("current latest itemid in mysql is " + str(curmaxitemid) + "\n")
 
         print "start to read remote data......"
-        logfile.write("start to read remote data......\n")
+        #logfile.write("start to read remote data......\n")
 
         url = "http://www.17500.cn/getData/ssq.TXT"
         data = urllib.urlopen(url).read()
@@ -39,7 +43,7 @@ def download():
                 items = line.split();
 
                 print "get one new item " + tmpitemid + " that needs to be inserted"
-                logfile.write("get one new item " + tmpitemid + " that needs to be inserted\n")
+                #logfile.write("get one new item " + tmpitemid + " that needs to be inserted\n")
                 numbers = []
                 numbers.append(int(tmpitemid))
                 numbers.append(int(items[2]))
@@ -57,7 +61,7 @@ def download():
                 numbers.append(int(items[19]));
                 numbers.append(int(items[20]));
                 print str(numbers) + " will be inserted"
-                logfile.write(str(numbers) + " will be inserted\n")
+                #logfile.write(str(numbers) + " will be inserted\n")
 
                 cursor.execute('insert into historydata values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', numbers)
                 cnt += 1
@@ -65,7 +69,7 @@ def download():
                 items = line.split();
 
                 print "update one item " + tmpitemid + " that needs to be updated"
-                logfile.write("update one item " + tmpitemid + " that needs to be updated\n")
+                #logfile.write("update one item " + tmpitemid + " that needs to be updated\n")
                 numbers = []
                 numbers.append(items[1]);
                 numbers.append(int(items[15]));
@@ -76,7 +80,7 @@ def download():
                 numbers.append(int(items[20]));
                 numbers.append(int(tmpitemid))
                 print str(numbers) + " will be updated"
-                logfile.write(str(numbers) + " will be updated\n")
+                #logfile.write(str(numbers) + " will be updated\n")
                 cursor.execute("update historydata set openDate=%s, totalSale=%s, poolTotal=%s, firstPrizeCnt=%s, firstPrizeValue=%s, secondPrizeCnt=%s, secondPrizeValue=%s where itemid=%s", numbers)
                 updateCnt += 1
 
@@ -86,24 +90,24 @@ def download():
 
         if cnt > 0:
             print "Download and insert into mysql successfully " + str(cnt) + " records."
-            logfile.write("Download and insert into mysql successfully" + str(cnt) + " records.\n")
+            #logfile.write("Download and insert into mysql successfully" + str(cnt) + " records.\n")
         elif updateCnt > 0:
             print "update mysql successfully " + str(updateCnt) + " record(s)."
-            logfile.write("update mysql successfully" + str(updateCnt) + " record(s).\n")
+            #logfile.write("update mysql successfully" + str(updateCnt) + " record(s).\n")
         else:
             print "no data is updated"
-            logfile.write("no data is updated\n")
+            #logfile.write("no data is updated\n")
 
         print time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time()))
-        logfile.write(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + "\n")
+        #logfile.write(time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(time.time())) + "\n")
 
     except Exception,data:
         print "Exception happens"
-        logfile.write("Exception happens \n")
+        #logfile.write("Exception happens \n")
         print Exception,":",data
-        logfile.write(str(Exception) + ":" + str(data) + "\n")
+        #logfile.write(str(Exception) + ":" + str(data) + "\n")
 
-    logfile.close()
+    #logfile.close()
     exit(0)
 
 if __name__ == '__main__' :

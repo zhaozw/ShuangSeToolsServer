@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ###############################################################
 #   Usage: upgrade SQLFile WarFilename TargetDir
 #       - SQLFile: MySQL DB Script for upgrade (shuangse.sql)
@@ -31,7 +31,7 @@ SHUT_TOMCAT="service tomcat stop"
 START_TOMCAT="service tomcat start"
 
 echo "upgrade database by executing $SQLFILE"
-mysql -h localhost -u java -p 100200 < $SQLFILE
+mysql shuangse -h localhost -u java -p -v < $SQLFILE
 
 if [ ! -d $BACKUPDIR ]
 then
@@ -51,10 +51,11 @@ for war in ${warslist[@]};do
     dirname=$(basename $war | awk -F "." '{print$1}')
     echo "rm -rf $realpath"
     rm -rf $realpath
-    echo "rm -rf $WARDIR/$dirname"
-    rm -rf $WARDIR/$dirname
+    echo "rm -rf $WARDIR$dirname"
+    rm -rf $WARDIR$dirname
 done
-
+echo "copy $WARFILE to $WARDIR ..."
 cp $WARFILE $WARDIR
 
 $START_TOMCAT
+
