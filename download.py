@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/bin/python
+#  yum install MySQL-python
 #  execute every 5 minutes to update
 #  crontab -e 
 #  */5 * * * * python /root/download.py
