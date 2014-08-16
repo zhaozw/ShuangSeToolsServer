@@ -1,4 +1,8 @@
 #!/bin/python
+# change timezone of server:
+#  cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#  hwclock
+#
 #  yum install MySQL-python
 #  execute every 5 minutes to update
 #  crontab -e 
